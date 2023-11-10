@@ -35,7 +35,7 @@ const AddBudgetForm =() => {
             <div className='row'>
                 <div className='col-sm'>
                     <button type='submit' className='btn btn-primary mt-3'>
-                        Submit Budget 
+                        Submit Budget 💰
                     </button>
                 </div>
             </div>
