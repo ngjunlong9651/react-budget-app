@@ -1,4 +1,5 @@
 import { createContext, useReducer } from 'react'; 
+import Budget from '../components/Budget';
 
 
 
@@ -9,6 +10,11 @@ const AppReducer = (state, action) => {
 				...state,
 				expenses: [...state.expenses, action.payload],
 			};
+		case 'Edit_Budget':
+			return {
+				...state,
+				budget: [...state.budget, action.payload]
+			}
 		case 'Delete_Expense':
 			return {
 				...state,
@@ -22,7 +28,7 @@ const AppReducer = (state, action) => {
 };
 
 const initialState = {
-	budget: 3000,
+	budget: {Budget},
 	expenses: [
 		{ id: 12, name: 'shopping', cost: 40 },
 		{ id: 13, name: 'holiday', cost: 400 },
