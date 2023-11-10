@@ -22,7 +22,13 @@ const AddExpenseForm =() => {
             type: "Add_Expense",
             payload: expense,
 
+
         });
+
+        // Reset the form fields:
+        setName('');
+        setCost('');
+        setCategory('');
     };
 
 
@@ -61,13 +67,13 @@ const AddExpenseForm =() => {
                         onChange={(event)=> setCategory(event.target.value)}
                     >
                         <option value ="">Select a category</option>
-                        <option value ="food">Food 🍔 </option>
-                        <option value ="transport">Transport 🚗 </option>
-                        <option value ="rent">Rent 🏠</option>
-                        <option value ="utilities">Utilities 🔌</option>
-                        <option value ="entertainment">Entertainment 🪩 </option>
-                        <option value ="healthcare"> Healthcare 🏥 </option>
-                        <option value ="others"> Others ❓</option>
+                        <option value ="Food">Food 🍔 </option>
+                        <option value ="Transport">Transport 🚗 </option>
+                        <option value ="Rent">Rent 🏠</option>
+                        <option value ="Utilities">Utilities 🔌</option>
+                        <option value ="Entertainment">Entertainment 🪩 </option>
+                        <option value ="Healthcare"> Healthcare 🏥 </option>
+                        <option value ="Others"> Others ❓</option>
                     </select>
                 </div>
             </div>
