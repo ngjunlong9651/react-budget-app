@@ -13,7 +13,7 @@ const AppReducer = (state, action) => {
 		case 'Edit_Budget':
 			return {
 				...state,
-				budget: [...state.budget, action.payload]
+				budget: action.payload
 			}
 		case 'Delete_Expense':
 			return {
@@ -28,7 +28,7 @@ const AppReducer = (state, action) => {
 };
 
 const initialState = {
-	budget: {Budget},
+	budget: 0,
 	expenses: [
 		{ id: 12, name: 'shopping', cost: 40 },
 		{ id: 13, name: 'holiday', cost: 400 },

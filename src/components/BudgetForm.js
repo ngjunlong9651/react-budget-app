@@ -4,19 +4,14 @@ import {v4 as uuidv4} from 'uuid';
 
 const AddBudgetForm =() => {
     const {dispatch} = useContext(AppContext)
-    const [budget,setBudget] = useState('')
+    const [newBudget, setNewBudget] = useState('') // Renamed to newBudget to avoid shadowing
 
     const onSubmit = (event) => {
         event.preventDefault();
 
-        const budget = {
-            id: uuidv4(),
-            budget: parseInt(budget),
-        };
-
         dispatch({
-            type: "Add_budget",
-            payload: budget,
+            type: "Edit_Budget",
+            payload: parseInt(newBudget),
 
         });
     };
@@ -26,14 +21,14 @@ const AddBudgetForm =() => {
         <form onSubmit={onSubmit}>
             <div className ='row'>
                 <div className='col-sm'>
-                    <label for ="name"> Budget </label>
+                    <label htmlFor = "budget"> Budget </label>
                     <input 
                         required = 'required'
-                        type = 'integer'
+                        type = 'text'
                         className='form-control'
-                        id ='name'
-                        value = {budget}
-                        onChange ={(event) => setBudget(event.target.value)}
+                        id ='budget'
+                        value = {newBudget}
+                        onChange ={(event) => setNewBudget(event.target.value)}
                     ></input>
                 </div>
             </div>
