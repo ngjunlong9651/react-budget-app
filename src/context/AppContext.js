@@ -29,24 +29,26 @@ const AppReducer = (state, action) => {
 
 const initialState = {
 	budget: 0,
-	expenses: [
-	],
+	expenses: [],
 };
 
 export const AppContext = createContext();
 
 export const AppProvider = (props) => {
-	const [state, dispatch] = useReducer(AppReducer, initialState);
+    const [state, dispatch] = useReducer(AppReducer, initialState, () => {
+        // Load the state from local storage
+        const localData = localStorage.getItem('budgetData');
+        return localData ? JSON.parse(localData) : initialState;
+    });
 
-	return (
-		<AppContext.Provider
-			value={{
-				budget: state.budget,
-				expenses: state.expenses,
-				dispatch,
-			}}
-		>
-			{props.children}
-		</AppContext.Provider>
-	);
+    useEffect(() => {
+        // Save the state to local storage
+        localStorage.setItem('budgetData', JSON.stringify(state));
+    }, [state]);
+
+    return (
+        <AppContext.Provider value={{ ...state, dispatch }}>
+            {props.children}
+        </AppContext.Provider>
+    );
 };
