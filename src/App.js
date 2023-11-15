@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Budget from "./components/Budget"
 import Remaining from './components/Remaining';
@@ -13,6 +13,8 @@ import Logout from './components/Logout';
 
 
 const App = () => {
+	const google = window.google;
+	
 	return (
 		<AppProvider>
 			<div className='container'>
