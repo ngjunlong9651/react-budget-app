@@ -8,8 +8,7 @@ import AddExpenseForm from './components/AddExpense';
 import AddBudgetForm from './components/BudgetForm';
 import { AppProvider } from './context/AppContext';
 import SpendingByCategory from './components/SpendByCategory';
-import Login from './components/Login';
-import Logout from './components/Logout';
+
 
 
 const App = () => {
