@@ -8,7 +8,8 @@ import AddExpenseForm from './components/AddExpense';
 import AddBudgetForm from './components/BudgetForm';
 import { AppProvider } from './context/AppContext';
 import SpendingByCategory from './components/SpendByCategory';
-import { auth } from './firebase_setup/firebase.js'; // Import Firebase auth
+import { auth } from './firebase_setup/firebase'; // Import Firebase auth
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'; // Import for Google Auth
 
 const App = () => {
     const [user, setUser] = useState(null);
@@ -22,6 +23,16 @@ const App = () => {
         // Cleanup subscription on unmount
         return () => unsubscribe();
     }, []);
+
+    // Define handleGoogleLogin inside the App component
+    const handleGoogleLogin = async () => {
+        const provider = new GoogleAuthProvider();
+        try {
+            await signInWithPopup(auth, provider);
+        } catch (error) {
+            console.error("Error signing in with Google", error);
+        }
+    };
 
     const handleLogout = () => {
         auth.signOut();
@@ -66,8 +77,9 @@ const App = () => {
                         </div>
                     </>
                 ) : (
-                    <div>Please log in to access the budget planner.</div>
-                    // You can add a simple login form or a button to log in here
+                    <div>
+                        <button onClick={handleGoogleLogin}>Login with Google</button>
+                    </div>
                 )}
             </div>
         </AppProvider>
