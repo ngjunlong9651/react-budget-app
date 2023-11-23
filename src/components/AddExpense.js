@@ -82,9 +82,9 @@ const AddExpenseForm =() => {
                         <option value ="Entertainment">Entertainment 🪩 </option>
                         <option value ="Healthcare"> Healthcare 🏥 </option>
                         <option value ="Others"> Others ❓ </option>
-                        {categories.map((cat, index)=>{
+                        {categories || [].map((cat, index)=>(
                             <option key ={index} value={cat}>{cat}</option>
-                        })}
+                        ))}
                     </select>
                 </div>
                 <div className='col-sm'>
