@@ -13,13 +13,18 @@ const AppReducer = (state, action) => {
 			return {
 				...state,
 				budget: action.payload
-			}
+			};
 		case 'Delete_Expense':
 			return {
 				...state,
 				expenses: state.expenses.filter(
 					(expense) => expense.id !== action.payload
 				),
+			};
+		case 'Add_Category':
+			return {
+				...state,
+				categories: [...state.categories, action.payload],
 			}
 		default:
 			return state;
