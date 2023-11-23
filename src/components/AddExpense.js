@@ -74,7 +74,7 @@ const AddExpenseForm =() => {
                         value={category} // This holds the selected category
                         onChange={(event) => setCategory(event.target.value)}
         >
-            {categories && categories.map((cat, index) => ( // Make sure to use 'categories' here
+            {Array.isArray(categories) && categories.map((cat, index) => ( // Make sure to use 'categories' here
                 <option key={index} value={cat}>{cat}</option>
             ))}
         </select>
