@@ -3,7 +3,7 @@ import { AppContext } from '../context/AppContext';
 import {v4 as uuidv4} from 'uuid';
 
 const AddExpenseForm =() => {
-    const {dispatch, categories} = useContext(AppContext)
+    const {dispatch, categories} = useContext(AppContext);
     const [name,setName] = useState('')
     const [cost,setCost] = useState('')
     const [category, setCategory] = useState('')
@@ -36,7 +36,7 @@ const AddExpenseForm =() => {
         dispatch({
             type: 'Add_Category',
             payload : newCategory,
-        })
+        });
         setNewCategory('');
     };
 
@@ -85,10 +85,10 @@ const AddExpenseForm =() => {
                     className='form-control'
                     value={newCategory}
                     onChange={(event) => setNewCategory(event.target.value)}
-                    placeholder='New Category'>
+                    placeholder='Create New Category'>
                     </input>
                     <button type ="button" onClick={handleAddCategory} className='btn btn-primary mt-3'>
-                        Add Category
+                        Submit New  Category
                     </button>
 
                 </div>
