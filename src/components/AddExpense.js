@@ -75,7 +75,7 @@ const AddExpenseForm =() => {
                         value ={category}
                         onChange={(event)=> setCategory(event.target.value)}
                     >
-                        {categories.map((cat, index) => (
+                        {category.map((cat, index) => (
                             <option key = {index} value ={cat}> {cat} </option>
                         ))}
                     </select>
