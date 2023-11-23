@@ -3,7 +3,7 @@ import { AppContext } from '../context/AppContext';
 import {v4 as uuidv4} from 'uuid';
 
 const AddExpenseForm =() => {
-    const {dispatch} = useContext(AppContext)
+    const {dispatch, categories} = useContext(AppContext)
     const [name,setName] = useState('')
     const [cost,setCost] = useState('')
     const [category, setCategory] = useState('')
@@ -29,6 +29,15 @@ const AddExpenseForm =() => {
         setCost('');
         setCategory('');
     };
+
+    const handleAddCategory =() =>{
+        dispatch({
+            type: 'Add_Category',
+            payload: newCategory,
+        });
+
+        setNewCategory('');
+    }
 
 
     return (
@@ -72,8 +81,26 @@ const AddExpenseForm =() => {
                         <option value ="Utilities">Utilities 🔌</option>
                         <option value ="Entertainment">Entertainment 🪩 </option>
                         <option value ="Healthcare"> Healthcare 🏥 </option>
-                        <option value ="Others"> Others ❓</option>
+                        <option value ="Others"> Others ❓ </option>
+                        {categories.map((cat, index)=>{
+                            <option key ={index} value={cat}>{cat}</option>
+                        })}
                     </select>
+                </div>
+                <div className='col-sm'>
+                    <input 
+                        type='text'
+                        className='form-control'
+                        value={newCategory}
+                        onChange={(event) => setNewCategory(event.target.value)}
+                        placeholder='Set New Category'
+                        />
+                    <button type ='button' onClick={handleAddCategory} className='btn btn-primary mt-3'>
+                    Add New Category 
+                    </button>
+
+
+
                 </div>
             </div>
             <div className='row'>

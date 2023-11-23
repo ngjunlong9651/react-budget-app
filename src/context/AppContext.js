@@ -34,6 +34,8 @@ const AppReducer = (state, action) => {
 const initialState = {
 	budget: 0,
 	expenses: [],
+	categories: ['Food', 'Transport', 'Rent', 'Utilities', 'Entertainment', 'Healthcare', 'Others'], // Default categories
+
 };
 
 export const AppContext = createContext();
