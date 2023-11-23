@@ -7,6 +7,7 @@ const AddExpenseForm =() => {
     const [name,setName] = useState('')
     const [cost,setCost] = useState('')
     const [category, setCategory] = useState('')
+    const [newCategory, setNewCategory] = useState('')
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -21,8 +22,6 @@ const AddExpenseForm =() => {
         dispatch({
             type: "Add_Expense",
             payload: expense,
-
-
         });
 
         // Reset the form fields:

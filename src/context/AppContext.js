@@ -21,6 +21,11 @@ const AppReducer = (state, action) => {
 					(expense) => expense.id !== action.payload
 				),
 			}
+		case 'Add_Category':
+			return{
+				...state,
+				categories:[...state.categories, action.payload]
+			}
 		default:
 			return state;
 	}
