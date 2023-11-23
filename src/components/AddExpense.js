@@ -68,17 +68,16 @@ const AddExpenseForm =() => {
                 </div>
                 <div className='col-sm'>
                     <label for ="category"> Category </label>
-                    <select 
-                        required = 'required'
-                        type='radio'
+                    <select
+                        required='required'
                         className='form-control'
-                        value ={category}
-                        onChange={(event)=> setCategory(event.target.value)}
-                    >
-                        {category.map((cat, index) => (
-                            <option key = {index} value ={cat}> {cat} </option>
-                        ))}
-                    </select>
+                        value={category} // This holds the selected category
+                        onChange={(event) => setCategory(event.target.value)}
+        >
+            {categories.map((cat, index) => ( // Make sure to use 'categories' here
+                <option key={index} value={cat}>{cat}</option>
+            ))}
+        </select>
                 </div>
                 <div className='col-sm'>
                     <input
