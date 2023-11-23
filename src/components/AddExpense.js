@@ -3,10 +3,11 @@ import { AppContext } from '../context/AppContext';
 import {v4 as uuidv4} from 'uuid';
 
 const AddExpenseForm =() => {
-    const {dispatch} = useContext(AppContext)
+    const {dispatch, categories} = useContext(AppContext);
     const [name,setName] = useState('')
     const [cost,setCost] = useState('')
     const [category, setCategory] = useState('')
+    const [newCategory, setNewCategory] = useState('');
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -29,6 +30,14 @@ const AddExpenseForm =() => {
         setName('');
         setCost('');
         setCategory('');
+    };
+
+    const handleAddCategory = () => {
+        dispatch({
+            type: 'Add_Category',
+            payload : newCategory,
+        });
+        setNewCategory('');
     };
 
 
@@ -59,22 +68,29 @@ const AddExpenseForm =() => {
                 </div>
                 <div className='col-sm'>
                     <label for ="category"> Category </label>
-                    <select 
-                        required = 'required'
-                        type='radio'
+                    <select
+                        required='required'
                         className='form-control'
-                        value ={category}
-                        onChange={(event)=> setCategory(event.target.value)}
-                    >
-                        <option value ="">Select a category</option>
-                        <option value ="Food">Food 🍔 </option>
-                        <option value ="Transport">Transport 🚗 </option>
-                        <option value ="Rent">Rent 🏠</option>
-                        <option value ="Utilities">Utilities 🔌</option>
-                        <option value ="Entertainment">Entertainment 🪩 </option>
-                        <option value ="Healthcare"> Healthcare 🏥 </option>
-                        <option value ="Others"> Others ❓</option>
-                    </select>
+                        value={category} // This holds the selected category
+                        onChange={(event) => setCategory(event.target.value)}
+        >
+            {categories && categories.map((cat, index) => ( // Make sure to use 'categories' here
+                <option key={index} value={cat}>{cat}</option>
+            ))}
+        </select>
+                </div>
+                <div className='col-sm'>
+                    <input
+                    type = "text"
+                    className='form-control'
+                    value={newCategory}
+                    onChange={(event) => setNewCategory(event.target.value)}
+                    placeholder='Create New Category'>
+                    </input>
+                    <button type ="button" onClick={handleAddCategory} className='btn btn-primary mt-3'>
+                        Submit New  Category
+                    </button>
+
                 </div>
             </div>
             <div className='row'>
