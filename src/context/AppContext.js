@@ -34,6 +34,7 @@ const AppReducer = (state, action) => {
 const initialState = {
 	budget: 0,
 	expenses: [],
+	categories: ['Food 🍔', 'Transport 🚗', 'Rent 🏠', 'Utilities 🔌', 'Entertainment 🪩', 'Healthcare 🏥', '']
 };
 
 export const AppContext = createContext();
