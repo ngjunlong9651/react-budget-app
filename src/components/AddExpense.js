@@ -45,7 +45,7 @@ const AddExpenseForm =() => {
         <form onSubmit={onSubmit}>
             <div className ='row'>
                 <div className='col-sm'>
-                    <label for ="name"> Name </label>
+                    <label htmlFor ="name"> Name </label>
                     <input 
                         required = 'required'
                         type = 'text'
@@ -56,7 +56,7 @@ const AddExpenseForm =() => {
                     ></input>
                 </div>
                 <div className='col-sm'>
-                    <label for ="cost"> Cost </label>
+                    <label htmlFor ="cost"> Cost </label>
                     <input 
                         required = 'required'
                         type = "text"
@@ -67,7 +67,7 @@ const AddExpenseForm =() => {
                     ></input>
                 </div>
                 <div className='col-sm'>
-                    <label for ="category"> Category </label>
+                    <label htmlFor ="category"> Category </label>
                     <select 
                         required = 'required'
                         type='radio'
@@ -83,9 +83,11 @@ const AddExpenseForm =() => {
                         <option value ="Entertainment">Entertainment 🪩 </option>
                         <option value ="Healthcare"> Healthcare 🏥 </option>
                         <option value ="Others"> Others ❓ </option>
-                        {categories || [].map((cat, index)=>(
-                            <option key ={index} value={cat}>{cat}</option>
+
+                        {categories.map((cat, index) => (
+                            <option key={index} value={cat}>{cat}</option>
                         ))}
+
                     </select>
                 </div>
                 <div className='col-sm'>
