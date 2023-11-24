@@ -3,10 +3,11 @@ import { AppContext } from '../context/AppContext';
 import {v4 as uuidv4} from 'uuid';
 
 const AddExpenseForm =() => {
-    const {dispatch} = useContext(AppContext)
+    const {dispatch, categories} = useContext(AppContext)
     const [name,setName] = useState('')
     const [cost,setCost] = useState('')
     const [category, setCategory] = useState('')
+    const [newCategory, setNewCategory] = useState('')
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -21,8 +22,6 @@ const AddExpenseForm =() => {
         dispatch({
             type: "Add_Expense",
             payload: expense,
-
-
         });
 
         // Reset the form fields:
@@ -31,12 +30,22 @@ const AddExpenseForm =() => {
         setCategory('');
     };
 
+    const handleAddCategory =() =>{
+        console.log(newCategory)
+        dispatch({
+            type: 'Add_Category',
+            payload: newCategory,
+        });
+        console.log(newCategory)
+        setNewCategory('');
+    }
+
 
     return (
         <form onSubmit={onSubmit}>
             <div className ='row'>
                 <div className='col-sm'>
-                    <label for ="name"> Name </label>
+                    <label htmlFor ="name"> Name </label>
                     <input 
                         required = 'required'
                         type = 'text'
@@ -47,7 +56,7 @@ const AddExpenseForm =() => {
                     ></input>
                 </div>
                 <div className='col-sm'>
-                    <label for ="cost"> Cost </label>
+                    <label htmlFor ="cost"> Cost </label>
                     <input 
                         required = 'required'
                         type = "text"
@@ -58,7 +67,7 @@ const AddExpenseForm =() => {
                     ></input>
                 </div>
                 <div className='col-sm'>
-                    <label for ="category"> Category </label>
+                    <label htmlFor ="category"> Category </label>
                     <select 
                         required = 'required'
                         type='radio'
@@ -73,8 +82,28 @@ const AddExpenseForm =() => {
                         <option value ="Utilities">Utilities 🔌</option>
                         <option value ="Entertainment">Entertainment 🪩 </option>
                         <option value ="Healthcare"> Healthcare 🏥 </option>
-                        <option value ="Others"> Others ❓</option>
+                        <option value ="Others"> Others ❓ </option>
+
+                        {categories.map((cat, index) => (
+                            <option key={index} value={cat}>{cat}</option>
+                        ))}
+
                     </select>
+                </div>
+                <div className='col-sm'>
+                    <input 
+                        type='text'
+                        className='form-control'
+                        value={newCategory}
+                        onChange={(event) => setNewCategory(event.target.value)}
+                        placeholder='Set New Category'
+                        />
+                    <button type ='button' onClick={handleAddCategory} className='btn btn-primary mt-3'>
+                    Add New Category 
+                    </button>
+
+
+
                 </div>
             </div>
             <div className='row'>
