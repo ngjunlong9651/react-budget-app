@@ -46,7 +46,18 @@ export const AppProvider = (props) => {
     const [state, dispatch] = useReducer(AppReducer, initialState, () => {
         // Load the state from local storage
         const localData = localStorage.getItem('budgetData');
-        return localData ? JSON.parse(localData) : initialState;
+		if (localData) {
+			try {
+				const parsedData = JSON.parse(localData);
+				// Validation Logic: Checking if categories is an array:
+				if (Array.isArray(parsedData.categories)) {
+					return parsedData;
+				}
+			} catch (error) {
+				console.log("Error parsing budget data from localStorage: ", error);
+			}
+		}
+        return initialState;
     });
 
     useEffect(() => {
