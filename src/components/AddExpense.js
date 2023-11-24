@@ -31,11 +31,12 @@ const AddExpenseForm =() => {
     };
 
     const handleAddCategory =() =>{
+        console.log(newCategory)
         dispatch({
             type: 'Add_Category',
             payload: newCategory,
         });
-
+        console.log(newCategory)
         setNewCategory('');
     }
 

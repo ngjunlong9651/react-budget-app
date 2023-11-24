@@ -22,6 +22,8 @@ const AppReducer = (state, action) => {
 				),
 			}
 		case 'Add_Category':
+			console.log(state.categories)
+			console.log(action.payload)
 			return{
 				...state,
 				categories: [...state.categories, action.payload]
