@@ -1,4 +1,6 @@
 import { createContext, useReducer, useEffect } from 'react'; 
+import {db} from '../firebase_setup/firebase.js'
+import { collection, addDoc } from "firebase/firestore"; 
 
 
 
