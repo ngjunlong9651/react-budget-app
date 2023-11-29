@@ -7,6 +7,19 @@ import { collection, addDoc } from "firebase/firestore";
 const AppReducer = (state, action) => {
 	switch (action.type) {
 		case 'Add_Expense':
+			// writing to firestore db
+			const addExpense = async () => {
+				try {
+					const docRef = await addDoc(collection(db, "expenses"), {
+						name: action.payload.name,
+						cost: action.payload.cost,
+						category: action.payload.category,
+					});
+					console.log("Document written with ID: ", docRef.id);
+				} catch (e) {
+					console.error("Error adding document: ", e);
+				}
+			};
 			return {
 				...state,
 				expenses: [...state.expenses, action.payload],
