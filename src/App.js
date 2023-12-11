@@ -6,8 +6,8 @@ import ExpenseTotal from './components/ExpenseTotal';
 import ExpenseList from './components/ExpenseList';
 import AddExpenseForm from './components/AddExpense';
 import AddBudgetForm from './components/BudgetForm';
-import { AppProvider } from './context/AppContext';
 import SpendingByCategory from './components/SpendByCategory';
+import { AppProvider } from './context/AppContext';
 import { auth } from './firebase_setup/firebase'; // Import Firebase auth
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'; // Import for Google Auth
 
