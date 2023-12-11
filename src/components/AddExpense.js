@@ -3,7 +3,7 @@ import { AppContext } from '../context/AppContext';
 import { addExpense } from '../firebase_setup/firebaseServices';
 import {v4 as uuidv4} from 'uuid';
 
-const AddExpenseForm =() => {
+const AddExpenseForm =({user}) => {
     const {dispatch, categories} = useContext(AppContext)
     const [name,setName] = useState('')
     const [cost,setCost] = useState('')
@@ -24,7 +24,7 @@ const AddExpenseForm =() => {
             type: "Add_Expense",
             payload: expense,
         });
-        
+
         addExpense(user.uid)
 
         // Reset the form fields:

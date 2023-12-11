@@ -46,7 +46,7 @@ const App = () => {
                     <>
                         <button onClick={handleLogout}>Logout</button> {/* Logout button */}
                         <h2 className='mt-3'> Edit Budget 💵 </h2>
-                        <AddBudgetForm />
+                        <AddBudgetForm user = {user}/>
                         <div className='row mt-3'>
                             <div className='col-sm'>
                                 <Budget />
@@ -67,7 +67,7 @@ const App = () => {
                         <h3 className='mt-3'>Add Expense</h3>
                         <div className='row mt-3'>
                             <div className='col-sm'>
-                                <AddExpenseForm />
+                                <AddExpenseForm user = {user} />
                             </div>
                         </div>
                         <div className='row mt-3'>
