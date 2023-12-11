@@ -25,7 +25,7 @@ const AddExpenseForm =({user}) => {
             payload: expense,
         });
 
-        addExpense(user.uid)
+        addExpense(user.uid, expense)
 
         // Reset the form fields:
         setName('');
