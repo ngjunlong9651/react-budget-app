@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { signIn } from '../authService'
 
 const signIn =() =>{
-    const [email. setEmail] = useState('')
+    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
     const handleSubmit = async (e) =>{
