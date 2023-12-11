@@ -24,11 +24,14 @@ const AddExpenseForm =() => {
             type: "Add_Expense",
             payload: expense,
         });
+        
+        addExpense(user.uid)
 
         // Reset the form fields:
         setName('');
         setCost('');
         setCategory('');
+
     };
 
     const handleAddCategory =() =>{
